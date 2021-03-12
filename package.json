@@ -1,0 +1,19 @@
+{
+  "name": "discord.js-utils",
+  "version": "1.0.0",
+  "description": "Some utilities attached with Discord.js npm",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "discord.js-utils"
+  },
+  "keywords": [
+    "discord.js",
+    "utils"
+  ],
+  "author": "Bhpsngum",
+  "license": "ISC"
+}
