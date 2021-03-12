@@ -29,5 +29,3 @@ var UTILS =  {
   }
 }
 module.exports = UTILS;
-UTILS.register({options:{http:{api: "https://discord.com/api",version:8}}});
-UTILS.getInviteInfo("y").then(console.log).catch(console.log);
