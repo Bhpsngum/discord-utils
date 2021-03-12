@@ -1,13 +1,13 @@
 const https = require('https');
 var UTILS =  {
-  register: function(client) {
-    this.client = client
+  extend: function(client) {
+    Object.assign(client, UTILS)
   },
   getInviteInfo: function(invite) {
     let error = {message: "Proccessing Failed", code: -1}
     return new Promise(function(resolve, reject) {
       try {
-        https.get(UTILS.client.options.http.api.replace(/\/$/,"")+'/v'+UTILS.client.options.http.version+'/invites/'+(invite||"").replace(/^(\s|\r|\n)+/,"").replace(/(\s|\r|\n)+$/,"").replace(/^(https*:\/\/)*discord.gg\//,""), function (res) {
+        https.get(this.options.http.api.replace(/\/$/,"")+'/v'+this.options.http.version+'/invites/'+(invite||"").replace(/^(\s|\r|\n)+/,"").replace(/(\s|\r|\n)+$/,"").replace(/^(https*:\/\/)*discord.gg\//,""), function (res) {
           res.setEncoding('utf8');
           let rawData = '';
           res.on('data', function(chunk) {rawData += chunk});
@@ -25,7 +25,7 @@ var UTILS =  {
         })
       }
       catch(e){reject(error)}
-    })
+    }.bind(this))
   }
 }
 module.exports = UTILS;
