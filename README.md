@@ -41,7 +41,7 @@ A promise:
 ```js
 bot.getInviteInfo("https://discord.gg/test").then((invite) => {
   console.log(`Server name: **${invite.guild.name}**`);
-  console.log(`Extracted invite code: **`${invite.code}`**`);
+  console.log(`Extracted invite code: **\`${invite.code}\`**`);
   // and many other fields
 }).catch((error) => {
   console.log(`Error: ${error.message}`);
