@@ -1,6 +1,6 @@
 {
   "name": "discord.js-extended",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Some utilities attached with Discord.js npm",
   "main": "index.js",
   "scripts": {

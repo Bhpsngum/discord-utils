@@ -1,4 +1,7 @@
 const https = require('https');
+var removeSlash = function (str) {
+  return str.replace(/^\//,"").replace(/\/$/,"")
+}
 var UTILS =  {
   extend: function(client) {
     Object.assign(client, UTILS)
@@ -7,7 +10,7 @@ var UTILS =  {
     let error = {message: "Proccessing Failed", code: -1}
     return new Promise(function(resolve, reject) {
       try {
-        https.get(this.options.http.api.replace(/\/$/,"")+'/v'+this.options.http.version+'/invites/'+(invite||"").replace(/^(\s|\r|\n)+/,"").replace(/(\s|\r|\n)+$/,"").replace(/^(https*:\/\/)*discord.gg\//,""), function (res) {
+        https.get(removeSlash(this.options.http.api)+'/v'+this.options.http.version+'/invites/'+removeSlash((invite||"").replace(/^(\s|\r|\n)+/,"").replace(/(\s|\r|\n)+$/,"").replace(/^(https*:\/\/)*discord.gg\//,""))+"?with_counts=true", function (res) {
           res.setEncoding('utf8');
           let rawData = '';
           res.on('data', function(chunk) {rawData += chunk});
