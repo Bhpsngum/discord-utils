@@ -1,6 +1,6 @@
 {
   "name": "discord.js-extended",
-  "version": "1.0.3",
+  "version": "1.0.3.5",
   "description": "Some utilities attached with Discord.js npm",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,9 @@
   },
   "keywords": [
     "discord.js",
-    "utils"
+    "utilities",
+    "extended",
+    "discord npm"
   ],
   "author": "Bhpsngum",
   "license": "ISC"
