@@ -46,5 +46,6 @@ bot.getInviteInfo("https://discord.gg/test").then((invite) => {
 }).catch((error) => {
   console.log(`Error: ${error.message}`);
   console.log(`Error code: \`${error.code}\``); // code of the error, -1 means the search has failed
+  // See `Discord.Constants.APIErrors` for error codes and messages
 })
 ```

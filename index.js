@@ -8,9 +8,10 @@ var UTILS =  {
   },
   getInviteInfo: function(invite) {
     let error = {message: "Proccessing Failed", code: -1}
+    if (invite == null) invite = "";
     return new Promise(function(resolve, reject) {
       try {
-        https.get(removeSlash(this.options.http.api)+'/v'+this.options.http.version+'/invites/'+removeSlash((invite||"").replace(/^(\s|\r|\n)+/,"").replace(/(\s|\r|\n)+$/,"").replace(/^(https*:\/\/)*discord.gg\//,""))+"?with_counts=true", function (res) {
+        https.get(removeSlash(this.options.http.api)+'/v'+this.options.http.version+'/invites/'+removeSlash(invite.toString().replace(/^(\s|\r|\n)+/,"").replace(/(\s|\r|\n)+$/,"").replace(/^(https*:\/\/)*discord.gg\//,""))+"?with_counts=true", function (res) {
           res.setEncoding('utf8');
           let rawData = '';
           res.on('data', function(chunk) {rawData += chunk});
