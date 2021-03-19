@@ -1,5 +1,14 @@
 const https = require('https');
-var removeSlash = function (str) {
+const invite_urls = [
+  /discordapp\.com\/invite\//,
+  /discord\.com\/invite\//,
+  /discord\.gg\/([^]*\/)*/
+];
+const protocol = /^(https*:\/\/)*(www\.)*/;
+var getInviteCode = function (invite) {
+  for (let filter of invite_urls) invite = invite.replace(new RegExp(protocol.source + filter.source), "");
+  return invite.replace(/(\?|\#|\\|\/).*/,"")
+}, removeSlash = function (str) {
   return str.replace(/^\//,"").replace(/\/$/,"")
 }
 var UTILS =  {
@@ -11,7 +20,7 @@ var UTILS =  {
     if (invite == null) invite = "";
     return new Promise(function(resolve, reject) {
       try {
-        https.get(removeSlash(this.options.http.api)+'/v'+this.options.http.version+'/invites/'+removeSlash(invite.toString().replace(/^(\s|\r|\n)+/,"").replace(/(\s|\r|\n)+$/,"").replace(/^(https*:\/\/)*discord.gg\//,""))+"?with_counts=true", function (res) {
+        https.get(removeSlash(this.options.http.api)+'/v'+this.options.http.version+'/invites/'+getInviteCode(invite.toString().replace(/^(\s|\r|\n)+/,"").replace(/(\s|\r|\n)+$/,""))+"?with_counts=true", function (res) {
           res.setEncoding('utf8');
           let rawData = '';
           res.on('data', function(chunk) {rawData += chunk});

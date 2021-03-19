@@ -29,8 +29,10 @@ get information based on the given invite
 * **`invite`**: Invite link
 
 Supported formats:
-* `https://discord.gg/123456`
-* `http://discord.gg/invitecode`
+
+(can be used with or without protocol `https://` or `http://`)
+* `discord.com/invite/invitecode`
+* `discordapp.com/invite/invitecodehere`
 * `discord.gg/coolinvitecode`
 * `onlyinvitecode`
 
