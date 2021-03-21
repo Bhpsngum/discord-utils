@@ -39,7 +39,7 @@ Supported formats:
 
 #### Return value
 A promise:
-* Fulfilled when the search is successful, including an object containing invite info
+* Fulfilled when the search is successful, including an Invite object containing invite info
 * Rejected when the invite is invalid or the search failed to perform, including an error object containing error information.
 ```js
 bot.getInviteInfo("https://discord.gg/test").then((invite) => {

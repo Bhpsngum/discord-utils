@@ -1,10 +1,10 @@
 const invite_urls = [
   /discordapp\.com\/invite\//,
   /discord\.com\/invite\//,
-  /discord\.gg\/([^]*[^#?]*\/)*/
+  /discord\.gg\/(invite\/)*([^#?]*\/)*/
 ];
 const protocol = /(www\.)*/;
-const code = /(.+)/;
+const code = /([^]*)/;
 var getInviteCode = function (invite) {
   for (let filter of invite_urls) {
     let invitecode = new RegExp(protocol.source + filter.source + code.source, "i").exec(invite);
