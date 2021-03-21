@@ -24,29 +24,31 @@ DiscordExtended.extend(DiscordBot);
 ## Commands
 
 ### `bot.getInviteInfo(invite)`
-get information based on the given invite
+better version of [`bot.fetchInvite(invite)`](https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=fetchInvite)
 #### Parameters
 * **`invite`**: Invite link
 
 Supported formats:
 
-(can be used with or without protocol `https://` or `http://`)
+(can be used with or without protocol `https://` or `http://`, case-insensitive)
 * `discord.com/invite/invitecode`
 * `discordapp.com/invite/invitecodehere`
 * `discord.gg/coolinvitecode`
+* `discord.gg/invite/anothercode`
 * `onlyinvitecode`
 
 #### Return value
 A promise:
 * Fulfilled when the search is successful, including an object containing invite info
-* Rejected when the invite is invalid or the search failed to perform, including and object containing error information.
+* Rejected when the invite is invalid or the search failed to perform, including an error object containing error information.
 ```js
 bot.getInviteInfo("https://discord.gg/test").then((invite) => {
   console.log(`Server name: **${invite.guild.name}**`);
   console.log(`Extracted invite code: **\`${invite.code}\`**`);
   // and many other fields
 }).catch((error) => {
-  console.log(`Error: ${error.message}`);
+  console.log(`Error name: ${error.name}`);
+  console.log(`Error message: ${error.message}`);
   console.log(`Error code: \`${error.code}\``); // code of the error, -1 means the search has failed
   // See `Discord.Constants.APIErrors` for error codes and messages
 })
